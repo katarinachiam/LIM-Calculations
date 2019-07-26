@@ -1,0 +1,25 @@
+function [s]= relslip(f1,f2)
+    s= f2/f1;
+end
+
+
+function [v1r] = primvolt(i,r1,w1r,l1l,w1,lm,r2,s,l2l)
+    num=j*w1*lm*((r2/s)+j*w1*l2l);
+    den=(r2/s)+(j*w1*(lm+l2l));
+    v1r=i *(r1 + j*w1r*l1l+num/den)
+end
+
+
+function [i1n]= ratedthrust(w1,i1)
+    i1n=(w1*i1)/w1
+end
+
+
+function [p1n]= inputpower(v1n,i1n,phi1n)
+    p1n=3*v1n*i1n*cos(phi1n)
+end
+
+
+function [pf] = powerfactor(phi1n)
+    pf=cos(phi1n)
+end
